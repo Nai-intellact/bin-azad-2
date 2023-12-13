@@ -66,3 +66,37 @@ console.log(result11); // Output: [5, 3]
 console.log(result22); // Output: "equal"
 console.log(result33); // Output: "Invalid input"
 console.log(result44); // Output: "Invalid input"
+//  assignment 4:
+function findAddress(obj) {
+    // Check if the input is an object
+    if (typeof obj !== 'object' || obj === null) {
+        return "Invalid input. Please provide an object.";
+    }
+
+    // Extract values of properties, replace missing properties with double underscore
+    const values = Object.values(obj).map(value => (value !== undefined ? value : '__'));
+
+    // Join the values with commas and return
+    return values.join(', ');
+}
+
+// Example usage:
+const addressObject = {
+    street: "123 Main St",
+    city: "Cityville",
+    zip: "12345"
+};
+
+const result = findAddress(addressObject);
+console.log(result);
+// Output: "123 Main St, Cityville, 12345"
+
+const incompleteObject = {
+    street: "456 Oak St",
+    zip: "54321"
+};
+
+const incompleteResult = findAddress(incompleteObject);
+console.log(incompleteResult);
+// Output: "456 Oak St, __, 54321"
+
